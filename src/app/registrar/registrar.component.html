@@ -1,0 +1,43 @@
+<div id="a">
+    <h1 id="titulo">Datos de Registro:</h1>
+    <form [formGroup]="myForm" (ngSubmit)="registrarse()" id="form">
+        <div class="mb-3">
+            <label class="form-label">Nombre (*)</label>
+            <input type="text" class="form-control" formControlName="nombre" >
+        </div>
+        <div *ngIf="myForm.get('nombre')?.errors && myForm.get('nombre')?.dirty">
+            <p *ngIf="myForm.get('nombre')?.hasError('required')" class="form-text">El campo es obligatorio</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido (*)</label>
+            <input type="text" class="form-control" formControlName="apellido">
+        </div>
+        <div *ngIf="myForm.get('apellido')?.errors && myForm.get('apellido')?.dirty">
+            <p *ngIf="myForm.get('apellido')?.hasError('required')" class="form-text">El campo es obligatorio</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Telefono</label>
+            <input type="number" class="form-control" formControlName="telefono">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email (*)</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div *ngIf="myForm.get('email')?.errors && myForm.get('email')?.dirty">
+            <p *ngIf="myForm.get('email')?.hasError('required')" class="form-text">El campo es obligatorio</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Contraseña (*)</label>
+            <input type="password" class="form-control" formControlName="clave" >
+        </div>
+        <div *ngIf="myForm.get('clave')?.errors && myForm.get('clave')?.dirty">
+            <p *ngIf="myForm.get('clave')?.hasError('required')" class="form-text">El campo es obligatorio</p>
+            <p *ngIf="myForm.get('clave')?.hasError('maxlength')" class="form-text">Debe escribir maximo 10 caracteres</p>
+            <p *ngIf="myForm.get('clave')?.hasError('minlength')" class="form-text">Debe escribir al menos 6 caracteres</p>
+        </div>
+        <p id="estado" class="alert alert-success" role="alert">{{estado}}</p>
+        <button type="submit" class="btn btn-primary" id="send" [disabled]="myForm.invalid">Registrarse</button>
+    </form>
+</div>
+
+

@@ -1,0 +1,62 @@
+<div class="d-flex align-items-center" *ngIf="isLoading">
+    <strong class="text-danger">Loading...</strong>
+    <div class="spinner-border ms-auto " role="status" aria-hidden="true"></div>
+</div>
+<div *ngIf="!isLoading" class="container" id="b" >
+    <h1 id="prod" >{{producto?.title}}</h1>
+    <div class="row">
+    <div class="col" sm={8} id="descripcion" >
+        <label>Descripcion: </label>
+        <div>
+            <li>Condicion: {{producto?.condition}}</li>
+             <!--<div *ngFor="let dato of tags">
+                <li>
+                    Tags descriptivo: {{dato}}
+                </li>
+             </div>-->
+             <li>{{description}}</li>
+        </div>
+    </div>
+    <div class="col" sm={4} id="imagen" >
+       <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" >
+                <img 
+                    class="d-block w-100" 
+                    src="{{imagenes[0].url}}" 
+                    alt="First slide"
+                    width="225px"
+                    height="300px">
+              </div>
+              <div class="carousel-item"  *ngFor="let imagen of vaImgCrrusel">
+                <img class="d-block w-100" 
+                    src="{{imagen.url}}" 
+                    alt="Second slide"
+                    width="225px"
+                    height="300px">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>   
+    </div>
+        
+</div>
+        <div class="row" id="precio">
+            <label>$ {{producto?.price}}</label>
+            <span></span>
+        </div>
+        <div class="row" id="cant">
+            <label>Cantidad disponible: {{cantidad}}</label>
+            <span></span>
+        </div>
+        <p id="estado" class="alert alert-warning" role="alert">{{estado}}</p>
+        <button id="comprar" class="btn btn-primary" (click)="comprar()">Comprar</button>
+</div>
+

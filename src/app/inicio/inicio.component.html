@@ -1,0 +1,22 @@
+<div id="a">
+    <h1 id="titulo">Datos de Inicio:</h1>
+    <form [formGroup]="myForm" (ngSubmit)="iniciar()" id="form">
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div *ngIf="myForm.get('email')?.errors && myForm.get('email')?.dirty" class="mb-3">
+            <p *ngIf="myForm.get('email')?.hasError('required')" class="form-text">El campo es obligatorio</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" >Contraseña</label>
+            <input type="password" class="form-control" formControlName="clave" >
+        </div>
+        <div *ngIf="myForm.get('clave')?.errors && myForm.get('clave')?.dirty" class="mb-3">
+            <p *ngIf="myForm.get('clave')?.hasError('required')" class="form-text">El campo es obligatorio</p>
+        </div>
+        <div id="estado" class="alert alert-success" role="alert">{{estado}}</div>
+        <button type="submit" class="btn btn-primary" id="send" [disabled]="myForm.invalid">Iniciar Sesion</button>
+        <button  class="btn btn-primary" id="send" routerLink="/registrar/">Registrarse</button>
+    </form>
+</div>
